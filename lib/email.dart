@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my/main.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(const EmailPage());
@@ -22,7 +23,23 @@ final messageController = TextEditingController();
 //service to be able to send emails
 Future sendEmail() async {
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
-  final response = await;
+  const serviceId = 'service_fe6xhxk';
+  const templateId = 'template_622ob7v';
+  const userId = 'user_IyusDGVniv8ieWyTY';
+  final response = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        "service_id": serviceId,
+        "template_id": templateId,
+        "user_id": userId,
+        "template_params": {
+          "name": nameController.text,
+          "subject": subjectController.text,
+          "message": messageController.text,
+          "user_email": emailController.text,
+        }
+      }));
+  return response.statusCode;
 }
 
 class _EmailPageState extends State<EmailPage> {
@@ -86,7 +103,9 @@ class _EmailPageState extends State<EmailPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    sendEmail();
+                  },
                   child: const Text('Send'),
                 ),
                 ElevatedButton(
