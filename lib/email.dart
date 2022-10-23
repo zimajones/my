@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my/main.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(const EmailPage());
@@ -17,6 +18,12 @@ final nameController = TextEditingController();
 final subjectController = TextEditingController();
 final emailController = TextEditingController();
 final messageController = TextEditingController();
+
+//service to be able to send emails
+Future sendEmail() async {
+  final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+  final response = await;
+}
 
 class _EmailPageState extends State<EmailPage> {
   @override
