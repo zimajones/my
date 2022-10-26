@@ -10,9 +10,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: appTitle,
-      home: MyHomePage(title: appTitle),
+      theme: ThemeData(
+        cardColor: Colors.white,
+      ),
+      home: const MyHomePage(title: appTitle),
     );
   }
 }
@@ -26,7 +29,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 41, 39, 39),
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -46,9 +51,10 @@ class MyHomePage extends StatelessWidget {
           //make text larger and add some padding and styling to the font
           const Text(
             'Check out stuff about me on the left!',
-            style: TextStyle(color: Colors.deepPurpleAccent),
+            style: TextStyle(color: Colors.white, fontSize: 22),
           ),
           Container(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             alignment: Alignment.center,
             child: Image.asset('assets/images/jonesjordandunk1.jpeg',
                 fit: BoxFit.fill),
@@ -61,25 +67,19 @@ class MyHomePage extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.white,
               ),
-              child: Text('Drawer Header'),
+              child: Text('About Me'),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Basketball'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text('Art'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
