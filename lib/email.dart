@@ -25,27 +25,21 @@ Future sendEmail() async {
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
   const serviceId = 'service_fe6xhxk';
   const templateId = 'template_622ob7v';
-  const userId = 'user_IyusDGVniv8ieWyTY';
-  try {
-    final test = await http.get(Uri.parse("https://google.com"));
-    final response = await http.post(url,
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          "service_id": serviceId,
-          "template_id": templateId,
-          "user_id": userId,
-          "template_params": {
-            "name": nameController.text,
-            "subject": subjectController.text,
-            "message": messageController.text,
-            "user_email": emailController.text,
-          }
-        }));
-    return response.statusCode;
-  } catch (error, stacktrace) {
-    debugPrint(error.toString());
-    debugPrintStack(stackTrace: stacktrace);
-  }
+  const userId = '_BNEXcbuvpqH_6lp6';
+
+  final response = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        "service_id": serviceId,
+        "template_id": templateId,
+        "user_id": userId,
+        "template_params": {
+          "name": nameController.text,
+          "subject": subjectController.text,
+          "message": messageController.text,
+          "user_email": emailController.text,
+        }
+      }));
 }
 
 class _EmailPageState extends State<EmailPage> {
