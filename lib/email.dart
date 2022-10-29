@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:my/main.dart';
 import 'package:http/http.dart' as http;
@@ -12,6 +14,7 @@ class EmailPage extends StatefulWidget {
   const EmailPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _EmailPageState createState() => _EmailPageState();
 }
 

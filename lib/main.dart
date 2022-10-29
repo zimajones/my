@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my/email.dart';
+import 'package:my/side_drawers/reading.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       theme: ThemeData(
-        cardColor: Colors.white,
+        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          color: Colors.black,
+        ),
       ),
       home: const MyHomePage(title: appTitle),
     );
@@ -81,6 +85,15 @@ class MyHomePage extends StatelessWidget {
               title: const Text('Art'),
               onTap: () {
                 Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Reading'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const myReading()),
+                );
               },
             ),
           ],
