@@ -18,6 +18,7 @@ class myReading extends StatelessWidget {
         title: const Text("What I'm Reading"),
       ),
       body: Column(
+        //think about what you wanna add here
         children: <Widget>[
           Image.asset('assets/images/dune.jpeg'),
         ],
